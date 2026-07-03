@@ -14,12 +14,7 @@ A simple terminal-based chatbot that responds to predefined user inputs using ru
 ## Tech Used
 - Python 3.x (standard library only — `random` module)
 
-## How to Run
-```bash
-python3 chatbot.py
-```
-
-Then just start typing. Type `bye`, `exit`, or `quit` to end the conversation.
+Just start typing. Type `bye`, `exit`, or `quit` to end the conversation.
 
 ## Sample Conversation
 
