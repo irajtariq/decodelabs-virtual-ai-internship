@@ -25,6 +25,26 @@ st.title("🔭 Stellar Object Classifier")
 st.write(
     "A K-Nearest Neighbors model trained on real Sloan Digital Sky Survey (SDSS) data — "
     "classifies a space object as a **Star**, **Galaxy**, or **Quasar** based on its light measurements."
+
+import base64
+
+def get_base64(file_path):
+    with open(file_path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+bg_image = get_base64("background.jpg")
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{bg_image}");
+        background-size: cover;
+        background-position: center;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 )
 
 
@@ -100,7 +120,7 @@ emoji_map = {"STAR": "⭐", "GALAXY": "🌌", "QSO": "💫"}
 st.markdown(f"### {emoji_map.get(prediction, '')} Predicted class: **{prediction}**")
 
 fig, ax = plt.subplots(figsize=(5, 2.5))
-ax.barh(prob_df["Class"], prob_df["Probability"], color="#4C72B0")
+ax.barh(prob_df["Class"], prob_df["Probability"], color="#FF1493")
 ax.set_xlabel("Probability")
 ax.set_xlim(0, 1)
 for idx, val in enumerate(prob_df["Probability"]):
