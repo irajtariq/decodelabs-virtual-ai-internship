@@ -5,8 +5,6 @@ A K-Nearest Neighbors classifier that identifies whether an astronomical object 
 ## Dataset
 [Stellar Classification Dataset SDSS17](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17) — ~100,000 real space objects with photometric and spectroscopic measurements.
 
-> Not included in this repo (large + third-party licensed). Download `star_classification.csv` from the link above and place it in this folder before running.
-
 ## Features Used
 - `u`, `g`, `r`, `i`, `z` — brightness measured through 5 different light filters
 - `redshift` — how much the object's light has stretched due to cosmic expansion (the strongest predictor — high redshift = distant quasar, near-zero = nearby star)
@@ -35,8 +33,7 @@ jupyter notebook project2_sdss_knn.ipynb
 
 **Live interactive demo:**
 ```bash
-pip install -r requirements.txt
-streamlit run app.py
+Deployed Website: https://project-2-stellar-classification-knn-hvrhfu4hdppwzwv8dca6b9.streamlit.app
 ```
 Then adjust the sliders (u, g, r, i, z, redshift) and watch the model classify the object live, with a probability breakdown across all 3 classes.
 
