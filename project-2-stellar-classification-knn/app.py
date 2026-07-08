@@ -5,6 +5,7 @@ Made By: Iraj Tariq
 """
 
 import os
+import base64
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -14,37 +15,52 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
+# Always look for files right next to this script, regardless of
+# what folder the app was launched from (fixes path issues on
+# Streamlit Cloud / other deployment environments)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(SCRIPT_DIR, "star_classification.csv")
+BG_IMAGE_PATH = os.path.join(SCRIPT_DIR, "background.jpg")
 
-DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "star_classification.csv")
 
 # -----------------------------
 # Page setup
 # -----------------------------
 st.set_page_config(page_title="Stellar Classifier", page_icon="🔭", layout="centered")
+
+
+def set_background(image_path):
+    if not os.path.exists(image_path):
+        st.warning("Background image not found — running without it. "
+                   "Add 'background.jpg' next to app.py to enable it.")
+        return
+
+    with open(image_path, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: linear-gradient(rgba(5, 5, 20, 0.75), rgba(5, 5, 20, 0.75)),
+                               url("data:image/jpg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+set_background(BG_IMAGE_PATH)
+
 st.title("🔭 Stellar Object Classifier")
 st.write(
     "A K-Nearest Neighbors model trained on real Sloan Digital Sky Survey (SDSS) data — "
     "classifies a space object as a **Star**, **Galaxy**, or **Quasar** based on its light measurements."
-
-import base64
-
-def get_base64(file_path):
-    with open(file_path, "rb") as f:
-        return base64.b64encode(f.read()).decode()
-
-bg_image = get_base64("background.jpg")
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url("data:image/jpg;base64,{bg_image}");
-        background-size: cover;
-        background-position: center;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 )
 
 
