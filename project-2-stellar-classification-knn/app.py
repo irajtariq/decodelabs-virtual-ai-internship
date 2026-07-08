@@ -70,6 +70,7 @@ st.write(
 @st.cache_data
 def load_data():
     df = pd.read_csv(DATA_PATH)
+    df = df[(df["u"] > -1000) & (df["g"] > -1000) & (df["r"] > -1000) & (df["i"] > -1000) & (df["z"] > -1000)]
     features = ["u", "g", "r", "i", "z", "redshift"]
     X = df[features]
     y = df["class"]
