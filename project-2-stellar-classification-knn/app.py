@@ -4,6 +4,7 @@ Stellar Classification (Star / Galaxy / Quasar) using KNN
 Made By: Iraj Tariq
 """
 
+import os
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,6 +13,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+
+
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "star_classification.csv")
 
 # -----------------------------
 # Page setup
@@ -29,7 +33,7 @@ st.write(
 # -----------------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv("star_classification.csv")
+    df = pd.read_csv(DATA_PATH)
     features = ["u", "g", "r", "i", "z", "redshift"]
     X = df[features]
     y = df["class"]
