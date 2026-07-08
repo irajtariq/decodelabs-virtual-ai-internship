@@ -7,7 +7,8 @@ This repository contains my project submissions for the DecodeLabs remote AI int
 | # | Project | Skills | Status |
 |---|---------|--------|--------|
 | 1 | [Rule-Based Chatbot](./project-1-rule-based-chatbot) | Control flow, decision logic, dictionaries | ✅ Complete |
-| 2 | *Coming next week* | — | 🔒 Locked |
+| 2 | [Stellar Classification (KNN)](./project-2-stellar-classification-knn) | Supervised learning, KNN, feature scaling, model evaluation | ✅ Complete |
+| 3 | *Coming next week* | — | 🔒 Locked |
 
 ## About the Internship
 DecodeLabs internship — hands-on AI projects designed to build practical skills through iterative, weekly milestones.
