@@ -32,9 +32,9 @@ jupyter notebook project2_sdss_knn.ipynb
 ```
 
 **Live interactive demo:**
-```bash
+
 Deployed Website: https://project-2-stellar-classification-knn-hvrhfu4hdppwzwv8dca6b9.streamlit.app
-```
+
 Then adjust the sliders (u, g, r, i, z, redshift) and watch the model classify the object live, with a probability breakdown across all 3 classes.
 
 ## Results
